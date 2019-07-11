@@ -30,10 +30,11 @@ export default class Header extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 2,
-    backgroundColor: '#aaa',
+    backgroundColor: '#fff',
     justifyContent: 'center',
   },
   texto: {
     paddingHorizontal: 16,
+    fontSize: 24,
   },
 });
