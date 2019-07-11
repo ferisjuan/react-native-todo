@@ -12,15 +12,16 @@ export default class Header extends Component {
   }
 
   render() {
+    const { setText, addTodo, text } = this.props;
     return (
       <View style={styles.container}>
         <Text> Header </Text>
         <TextInput
           placeholder="Escribe una tarea"
           style={styles.texto}
-          onChange={this.props.setText}
-          onSubmitEditing={this.props.addTodo}
-          value={this.props.text}
+          onChange={setText}
+          onSubmitEditing={addTodo}
+          value={text}
         />
       </View>
     );

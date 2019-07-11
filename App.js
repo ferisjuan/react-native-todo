@@ -74,10 +74,9 @@ class App extends Component {
 
 
   render() {
-    const { text, todos } = this.state;
     return (
       <View style={styles.container}>
-        <Header text={text} addTodo={this.addTodo} setText={this.setText} />
+        <Header {...this.state} addTodo={this.addTodo} setText={this.setText} />
         <Body {...this.state} removeTask={this.removeTask} />
       </View>
     );
