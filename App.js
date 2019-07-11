@@ -13,6 +13,7 @@ class App extends Component {
     this.state = {
       todos: [],
       text: '',
+      isLoading: true,
     };
   }
 
@@ -55,10 +56,15 @@ class App extends Component {
           const savedTodos = JSON.parse(data);
           this.setState({
             todos: savedTodos,
+            isLoading: false,
           });
         }
+        this.setState({ isLoading: false });
       })
-      .catch(err => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        this.setState({ isLoading: false });
+      });
   }
 
   saveToLocalStorage = (data) => {
@@ -72,7 +78,7 @@ class App extends Component {
     return (
       <View style={styles.container}>
         <Header text={text} addTodo={this.addTodo} setText={this.setText} />
-        <Body text={text} todos={todos} removeTask={this.removeTask} />
+        <Body {...this.state} removeTask={this.removeTask} />
       </View>
     );
   }

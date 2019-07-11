@@ -14,12 +14,13 @@ export default class Task extends Component {
   }
 
   render() {
+    const { item, removeTask } = this.props;
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>{this.props.item.task}</Text>
+        <Text style={styles.text}>{item.task}</Text>
 
         <TouchableOpacity
-          onPress={() => this.props.removeTask(this.props.item.key)}
+          onPress={() => removeTask(item.key)}
         >
           <Ionicons
             name="md-trash"
