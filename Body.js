@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import
 {
-  StyleSheet, View, Text, FlatList,
+  StyleSheet, View, Text, FlatList, ActivityIndicator,
 } from 'react-native';
 
 import Task from './Task';
@@ -14,14 +14,17 @@ export default class Body extends Component {
   }
 
   render() {
-    const { todos } = this.props;
+    const { todos, isLoading, removeTask } = this.props;
     return (
       <View style={styles.container}>
+        {isLoading && <ActivityIndicator size="large" color="#640064" />}
         <Text> Body </Text>
-        <FlatList
-          data={todos}
-          renderItem={({ item }) => <Task item={item} removeTask={this.props.removeTask} />}
-        />
+        {!isLoading && (
+          <FlatList
+            data={todos}
+            renderItem={({ item }) => <Task item={item} removeTask={removeTask} />}
+          />
+        )}
       </View>
     );
   }
